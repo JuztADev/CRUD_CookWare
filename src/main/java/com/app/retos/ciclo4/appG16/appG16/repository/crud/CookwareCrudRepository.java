@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface CookwareCrudRepository extends MongoRepository<Cookware,String> {
 
-    @Query("{price: ?0}")
+    @Query("{'price': {$lte:?0}}")
     List<Cookware> findByPrice(double price);
 
     @Query("{'description': {$regex:?0,$options:'i'}}")
